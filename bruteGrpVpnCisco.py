@@ -17,14 +17,19 @@ __maintainer__ = "C4rt"
 __email__ = "eric.c4rtman@gmail.com"
 __status__ = "Production"
 
-import sys
-import os
-import time
-import subprocess
-# from scapy.all import *
-import pexpect
-import optparse
-from threading import *
+try:
+    import sys
+    import os
+    import time
+    import subprocess
+    # from scapy.all import *
+    import pexpect
+    import optparse
+    from threading import *
+except ImportError, err:
+    raise
+    print >>sys.stderr, "[X] Unable to import : %s\n" % err
+    sys.exit(1)
 
 maxConnections = 5
 connection_lock = BoundedSemaphore(value=maxConnections)
